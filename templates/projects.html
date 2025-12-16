@@ -1,15 +1,22 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>Projects</h2>
 
-<form method="POST" action="/add_project">
-  <input name="name" placeholder="Project name" required>
-  <button>Create</button>
-</form>
+<div style="padding:20px;">
+  <h2 style="color:white;">Projects</h2>
 
-<ul>
-{% for p in projects %}
-  <li><a href="/project/{{p.id}}">{{p.name}}</a></li>
-{% endfor %}
-</ul>
+  <form method="POST" action="/add_project">
+    <input name="name" placeholder="New project name" required>
+  </form>
+
+  <ul>
+  {% for p in projects %}
+    <li>
+      <a href="/project/{{p.id}}" style="color:white;">
+        {{p.name}}
+      </a>
+    </li>
+  {% endfor %}
+  </ul>
+</div>
+
 {% endblock %}
