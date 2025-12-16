@@ -1,15 +1,35 @@
 body {
-    font-family: Arial;
-    background: #f4f6f8;
+  font-family: Arial;
+  background: #0079bf;
 }
 
-.container {
-    width: 800px;
-    margin: auto;
+.board {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
 }
 
-input, textarea, button {
-    display: block;
-    margin: 10px 0;
-    padding: 8px;
+.list {
+  background: #ebecf0;
+  width: 260px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.cards {
+  min-height: 50px;
+}
+
+.card {
+  background: white;
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  cursor: grab;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+input {
+  width: 100%;
+  padding: 5px;
 }
