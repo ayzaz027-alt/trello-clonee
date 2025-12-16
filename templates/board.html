@@ -3,20 +3,20 @@
 
 <div class="board">
 {% for l in lists %}
-  <div class="list" data-list-id="{{l.id}}">
-    <h3>{{l.name}}</h3>
+  <div class="list">
+    <div class="list-title">{{ l.name }}</div>
 
-    <div class="cards" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <div class="cards" data-list="{{ l.id }}">
       {% for c in cards if c.list_id == l.id %}
-        <div class="card" draggable="true" ondragstart="drag(event)" data-card-id="{{c.id}}">
-          {{c.title}}
+        <div class="card" draggable="true" data-id="{{c.id}}">
+          {{ c.title }}
         </div>
       {% endfor %}
     </div>
 
-    <form method="POST" action="/add_card">
+    <form class="add-card" method="POST" action="/add_card">
       <input type="hidden" name="list_id" value="{{l.id}}">
-      <input name="title" placeholder="Add card">
+      <input name="title" placeholder="+ Add a card">
     </form>
   </div>
 {% endfor %}
