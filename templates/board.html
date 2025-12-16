@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="board">
+{% for l in lists %}
+  <div class="list" data-list-id="{{l.id}}">
+    <h3>{{l.name}}</h3>
+
+    <div class="cards" ondrop="drop(event)" ondragover="allowDrop(event)">
+      {% for c in cards if c.list_id == l.id %}
+        <div class="card" draggable="true" ondragstart="drag(event)" data-card-id="{{c.id}}">
+          {{c.title}}
+        </div>
+      {% endfor %}
+    </div>
+
+    <form method="POST" action="/add_card">
+      <input type="hidden" name="list_id" value="{{l.id}}">
+      <input name="title" placeholder="Add card">
+    </form>
+  </div>
+{% endfor %}
+</div>
+
+{% endblock %}
