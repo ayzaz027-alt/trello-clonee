@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ project.name }}</h1>
+
+<form method="POST" action="/add_task/{{ project.id }}" enctype="multipart/form-data">
+    <input name="title" placeholder="Task title" required>
+    <textarea name="description"></textarea>
+    <input type="file" name="file">
+    <button>Add Task</button>
+</form>
+
+<ul>
+{% for t in tasks %}
+    <li>
+        <strong>{{ t.title }}</strong> - {{ t.status }}
+        {% if t.attachment %}
+            <a href="/static/uploads/{{ t.attachment }}">Download</a>
+        {% endif %}
+    </li>
+{% endfor %}
+</ul>
+{% endblock %}
