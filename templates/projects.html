@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Projects</h1>
+
+<form method="POST" action="/add_project">
+    <input name="name" placeholder="Project name" required>
+    <textarea name="description" placeholder="Description"></textarea>
+    <button>Create Project</button>
+</form>
+
+<ul>
+{% for p in projects %}
+    <li>
+        <a href="/project/{{ p.id }}">{{ p.name }}</a>
+    </li>
+{% endfor %}
+</ul>
+{% endblock %}
